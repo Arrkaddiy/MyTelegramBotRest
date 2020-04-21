@@ -18,7 +18,7 @@ public class TinderMyProfileApi implements TinderApi {
     public String profileMethod(User user) {
         log.info("Передача в Tinder команды - /profile от пользователя - '{}'", user);
         RestTemplate restTemplate = getRestTemplate();
-        String request = getUri(URI, user.getTinderId().toString(), "my_profile");
+        String request = getUri(URI, user.getTinderId().toString(), "my-profile");
         log.debug("Получен запрос - '{}'", request);
         return restTemplate.getForObject(request, String.class);
     }
@@ -30,7 +30,7 @@ public class TinderMyProfileApi implements TinderApi {
         HttpEntity<?> entity = new HttpEntity<>(headers);
 
         RestTemplate restTemplate = getRestTemplate();
-        String request = getUri(URI, user.getTinderId().toString(), "my_profile", "sing_in");
+        String request = getUri(URI, user.getTinderId().toString(), "my-profile", "sing-in");
 
         request = request + "?" + "name=" + name + "&" + "pass=" + pass;
 
@@ -45,7 +45,7 @@ public class TinderMyProfileApi implements TinderApi {
         HttpEntity<?> entity = new HttpEntity<>(headers);
 
         RestTemplate restTemplate = getRestTemplate();
-        String request = getUri(URI, user.getTinderId().toString(), "my_profile", "sing_up");
+        String request = getUri(URI, user.getTinderId().toString(), "my-profile", "sing-up");
 
         request = request + "?" + "name=" + name + "&" + "pass=" + pass + "&" + "sex=" + sex;
 
@@ -56,7 +56,7 @@ public class TinderMyProfileApi implements TinderApi {
     public String singOutMethod(User user) {
         log.info("Передача в Tinder команды - /singOut от пользователя - '{}'", user);
         RestTemplate restTemplate = getRestTemplate();
-        String request = getUri(URI, user.getTinderId().toString(), "my_profile", "sing_out");
+        String request = getUri(URI, user.getTinderId().toString(), "my-profile", "sing-out");
         log.debug("Получен запрос - '{}'", request);
         return restTemplate.getForObject(request, String.class);
     }
@@ -68,7 +68,7 @@ public class TinderMyProfileApi implements TinderApi {
         HttpEntity<?> entity = new HttpEntity<>(headers);
 
         RestTemplate restTemplate = getRestTemplate();
-        String request = getUri(URI, user.getTinderId().toString(), "my_profile", "update");
+        String request = getUri(URI, user.getTinderId().toString(), "my-profile", "update");
 
         request = request + "?" + "about=" + about;
 
