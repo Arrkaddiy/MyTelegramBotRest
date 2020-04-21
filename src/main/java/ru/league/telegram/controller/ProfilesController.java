@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import ru.league.telegram.bot.BotContext;
 import ru.league.telegram.bot.BotSendMessage;
 import ru.league.telegram.model.ProfileModel;
-import ru.league.telegram.rest.TinderProfilesApi;
 import ru.league.telegram.rest.TinderMethodApi;
+import ru.league.telegram.rest.TinderProfilesApi;
 import ru.league.telegram.rest.TinderUserApi;
 
 import java.util.List;

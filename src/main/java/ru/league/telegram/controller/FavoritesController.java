@@ -8,7 +8,6 @@ import ru.league.telegram.bot.BotContext;
 import ru.league.telegram.bot.BotSendMessage;
 import ru.league.telegram.rest.TinderFavoritesApi;
 import ru.league.telegram.rest.TinderMethodApi;
-import ru.league.telegram.rest.TinderProfilesApi;
 
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class FavoritesController implements BotSendMessage {
     private UserController userController;
 
     @Autowired
-    private TinderProfilesApi profilesApi;
+    private ProfilesController profilesController;
 
     public void favoritesMethod(BotContext context) {
         log.debug("Отправка запроса по контексту - '{}'", context);
@@ -40,18 +39,18 @@ public class FavoritesController implements BotSendMessage {
     public void favoritesWaitMethod(BotContext context) {
         log.debug("Отправка запроса по контексту - '{}'", context);
         String response = favoritesApi.favoriteNumberMethod(context.getUser(), context.getInput());
+        if (response == null || response.isEmpty()) {
+            response = "<Здесь могла быть ваша реклама>";
+        }
         sendTextMessage(context, response);
     }
 
     public void exitMethod(BotContext context) {
         log.debug("Отправка запроса по контексту - '{}'", context);
         String response = favoritesApi.exitMethod(context.getUser());
-        if (response == null|| response.isEmpty()) {
-            response = "<Здесь могла быть ваша реклама>";
-        }
-            userController.updateUserWait(context.getUser(), null);
+        userController.updateUserWait(context.getUser(), null);
         List<String> methods = methodApi.getPossibleMethods(context.getUser()).getPossibleMethods();
         sendTextMessageWithKeyboard(context, response, methods);
-        profilesApi.leftMethod(context.getUser());
+        profilesController.leftMethod(context);
     }
 }

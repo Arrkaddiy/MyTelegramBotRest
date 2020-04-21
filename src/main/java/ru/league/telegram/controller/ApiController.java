@@ -118,7 +118,7 @@ public class ApiController {
 
     private void matchByWaitMethod(BotContext context) {
         log.debug("Определение API c ожиданием согласно запросу - '{}'", context.getInput());
-        if(context.getInput().equalsIgnoreCase("/exit")) {
+        if (context.getInput().equalsIgnoreCase("/exit")) {
             favoritesController.exitMethod(context);
             return;
         }

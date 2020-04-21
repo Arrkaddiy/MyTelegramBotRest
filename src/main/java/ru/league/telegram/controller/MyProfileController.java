@@ -9,7 +9,6 @@ import ru.league.telegram.bot.BotSendMessage;
 import ru.league.telegram.entity.User;
 import ru.league.telegram.rest.TinderMethodApi;
 import ru.league.telegram.rest.TinderMyProfileApi;
-import ru.league.telegram.rest.TinderProfilesApi;
 
 import java.util.List;
 
