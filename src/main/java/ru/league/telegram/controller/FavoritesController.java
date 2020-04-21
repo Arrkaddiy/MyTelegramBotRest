@@ -46,8 +46,12 @@ public class FavoritesController implements BotSendMessage {
     public void exitMethod(BotContext context) {
         log.debug("Отправка запроса по контексту - '{}'", context);
         String response = favoritesApi.exitMethod(context.getUser());
-        userController.updateUserWait(context.getUser(), null);
-        sendTextMessage(context, response);
+        if (response == null|| response.isEmpty()) {
+            response = "<Здесь могла быть ваша реклама>";
+        }
+            userController.updateUserWait(context.getUser(), null);
+        List<String> methods = methodApi.getPossibleMethods(context.getUser()).getPossibleMethods();
+        sendTextMessageWithKeyboard(context, response, methods);
         profilesApi.leftMethod(context.getUser());
     }
 }

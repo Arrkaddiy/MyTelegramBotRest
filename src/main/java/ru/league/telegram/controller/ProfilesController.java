@@ -44,6 +44,5 @@ public class ProfilesController implements BotSendMessage {
         if (response != null && !response.isEmpty()) {
             sendTextMessage(context, response);
         }
-        leftMethod(context);
     }
 }
