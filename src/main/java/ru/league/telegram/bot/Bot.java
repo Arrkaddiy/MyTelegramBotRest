@@ -6,7 +6,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import ru.league.telegram.controller.BotController;
+import ru.league.telegram.controller.ApiController;
 
 @Component
 @PropertySource("classpath:telegram.properties")
@@ -19,11 +19,11 @@ public class Bot extends TelegramLongPollingBot {
     private String botToken;
 
     @Autowired
-    private BotController botController;
+    private ApiController apiController;
 
     @Override
     public void onUpdateReceived(Update update) {
-        botController.of(this,  update);
+        apiController.execute(this,  update);
     }
 
     @Override

@@ -13,4 +13,12 @@ public interface TinderApi {
         ClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
         return new RestTemplate(requestFactory);
     }
+
+    default String getUri(String uri, String... requestParam) {
+        StringBuilder builder = new StringBuilder(uri);
+        for (String request : requestParam) {
+            builder.append("/").append(request);
+        }
+        return builder.toString();
+    }
 }

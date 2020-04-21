@@ -1,6 +1,6 @@
 package ru.league.telegram.entity;
 
-import ru.league.telegram.model.UserModel;
+import ru.league.telegram.controller.Method;
 
 import javax.persistence.*;
 
@@ -14,7 +14,8 @@ public class User {
 
     private Long chatId;
     private Long tinderId;
-    private String stateName;
+
+    private Method wait;
 
     public User() {
     }
@@ -47,18 +48,12 @@ public class User {
         this.tinderId = tinderId;
     }
 
-    public String getStateName() {
-        return stateName;
+    public Method getWait() {
+        return wait;
     }
 
-    public void setStateName(String stateName) {
-        this.stateName = stateName;
-    }
-
-    public User updateByUserModel(UserModel userModel) {
-        setTinderId(userModel.getTinderId());
-        setStateName(userModel.getStateName());
-        return this;
+    public void setWait(Method wait) {
+        this.wait = wait;
     }
 
     @Override
@@ -67,7 +62,7 @@ public class User {
                 "id=" + id +
                 ", chatId=" + chatId +
                 ", tinderId=" + tinderId +
-                ", stateName='" + stateName + '\'' +
+                ", wait=" + wait +
                 '}';
     }
 }
